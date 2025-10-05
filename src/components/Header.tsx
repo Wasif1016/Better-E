@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const Header = () => {
   const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
@@ -21,13 +22,36 @@ const Header = () => {
     setIsPartnershipOpen(false);
   };
 
+  const sendEmail = async (subject: string, html: string, replyTo?: string) => {
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, html, replyTo }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || 'Failed');
+      alert('Bericht verzonden!');
+      closeModal();
+    } catch (err) {
+      console.error('Send email error', err);
+      alert('Verzenden mislukt. ' + ((err as Error).message || 'Probeer later opnieuw.'));
+    }
+  };
+
   return (
     <>
       <header className="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-14 py-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold">BetterE</h1>
+            <Image 
+              src="/BetterE_LOGO7 (2).png" 
+              alt="BetterE Logo" 
+              width={120} 
+              height={40} 
+              className="object-contain h-12 w-auto"
+            />
           </div>
 
           {/* Navigation */}
@@ -55,7 +79,7 @@ const Header = () => {
               onClick={openPartnershipModal}
               className="btn-secondary text-sm"
             >
-              Samenwerken
+              Retail & verzekeraars
             </button>
           </div>
         </div>
@@ -75,7 +99,16 @@ const Header = () => {
             <p className="mb-4 text-gray-600">
               Laat uw gegevens achter en ontvang updates over de beschikbaarheid en levering.
             </p>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget as HTMLFormElement;
+              const name = (form.querySelector('#preorder-name') as HTMLInputElement).value;
+              const email = (form.querySelector('#preorder-email') as HTMLInputElement).value;
+              const phone = (form.querySelector('#preorder-phone') as HTMLInputElement).value;
+              const message = (form.querySelector('#preorder-message') as HTMLTextAreaElement).value;
+              const html = `<h3>Pre-order aanvraag</h3><p><b>Naam:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Telefoon:</b> ${phone}</p><p><b>Bericht:</b> ${message}</p>`;
+              await sendEmail('Pre-order aanvraag', html, email);
+            }}>
               <div>
                 <label htmlFor="preorder-name" className="block text-sm font-medium text-gray-700 mb-1">
                   Naam
@@ -147,7 +180,17 @@ const Header = () => {
             <p className="mb-4 text-gray-600">
               Laat uw bedrijfsgegevens achter en we nemen zo spoedig mogelijk contact met u op.
             </p>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget as HTMLFormElement;
+              const company = (form.querySelector('#partnership-company') as HTMLInputElement).value;
+              const name = (form.querySelector('#partnership-name') as HTMLInputElement).value;
+              const email = (form.querySelector('#partnership-email') as HTMLInputElement).value;
+              const phone = (form.querySelector('#partnership-phone') as HTMLInputElement).value;
+              const message = (form.querySelector('#partnership-message') as HTMLTextAreaElement).value;
+              const html = `<h3>Samenwerkingsverzoek</h3><p><b>Bedrijf:</b> ${company}</p><p><b>Naam:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Telefoon:</b> ${phone}</p><p><b>Bericht:</b> ${message}</p>`;
+              await sendEmail('Samenwerkingsverzoek', html, email);
+            }}>
               <div>
                 <label htmlFor="partnership-company" className="block text-sm font-medium text-gray-700 mb-1">
                   Bedrijfsnaam

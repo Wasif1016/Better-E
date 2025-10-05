@@ -1,3 +1,16 @@
+## Environment variables
+
+Create a file named `.env.local` in the project root with:
+
+```
+SMTP_USER=81abe7001@smtp-brevo.com
+SMTP_PASS=w3ApFNx1bg4fW8mr
+SENDER_EMAIL=web.dev.haseeb@gmail.com
+COMPANY_EMAIL=wasifdevelopsite@gmail.com
+```
+
+Restart the dev server after adding envs.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

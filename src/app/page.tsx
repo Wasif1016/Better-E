@@ -9,50 +9,52 @@ import CallToActionSection from '../components/CallToActionSection';
 import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
 
+// Import Lucide React icons
+import { BatteryCharging, ShieldAlert, Trash2 } from 'lucide-react';
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background bg">
       <Header />
       <main>
         <Hero />
         
         {/* Problem Section */}
-        <section id="probleem" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
+        <section id="probleem" className="py-16 bg-gray-50">
+          <div className="max-w-[1400px] mx-auto px-4">
             <h2 className="section-title">Het Probleem</h2>
-            <p className="section-subtitle">
-              E-bikes, e-steps en e-scooters worden steeds populairder, maar hun batterijen worden vaak te intensief geladen, 
-              wat leidt tot versneld batterijverloop, veiligheidsrisico's en veel elektronisch afval.
+            <p className="section-subtitle px-80">
+              Accu's slijten te vroeg, laden kan risicovol zijn en vervanging zorgt voor hoge kosten en e-waste.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
-                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-red-600">1</span>
+            <div className="flex flex-col md:flex-row gap-6 mt-12 justify-center max-w-5xl mx-auto">
+              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+                <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BatteryCharging className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Batterijleven</h3>
+                <h3 className="text-xl font-bold mb-2">Vervroegde veroudering</h3>
                 <p className="text-gray-600">
-                  Overladen verkort de levensduur van lithium-ion batterijen tot wel 50%, wat resulteert in frequente vervanging.
+                  Veel e-bike-accu's moeten na 4-5 jaar worden vervangen door suboptimaal laden.
                 </p>
               </div>
               
-              <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
-                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-red-600">2</span>
+              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+                <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <ShieldAlert className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Veiligheidsrisico's</h3>
+                <h3 className="text-xl font-bold mb-2">Veiligheidszorgen</h3>
                 <p className="text-gray-600">
-                  Te hoge laadtemperaturen en spanningen veroorzaken brandgevaar, met jaarlijks honderden incidenten in huishoudens.
+                  Overladen en hitte degraderen cellen - met een hoger risico op incidenten.
                 </p>
               </div>
               
-              <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
-                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-red-600">3</span>
+              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+                <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Trash2 className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Elektronisch afval</h3>
+                <h3 className="text-xl font-bold mb-2">Hoge kosten & e-waste</h3>
                 <p className="text-gray-600">
-                  Vervroegde batterijvervanging produceert enorme hoeveelheden e-waste met schaarse en giftige materialen.
+                  Nieuwe packs zijn duur en vergroten vraag naar kritieke materialen en afvalstromen.
                 </p>
               </div>
             </div>

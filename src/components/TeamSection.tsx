@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import ReadMoreTooltipButton from '@/components/ui/read-more-tooltip-button';
 
 const TeamSection = () => {
   const teamMembers = [
@@ -18,33 +19,37 @@ const TeamSection = () => {
     {
       name: "Godard Lensvelt",
       role: "Co-founder & Business Development",
-      image: "/Inse van Houts BetterE Team.jpg",
+      image: "/Godard Lensvelt.webp",
       description: "Studeert Technische Bestuurskunde aan de TU Delft met een focus op Energie & Industrie en volgde een minor in Finance aan de Comillas Universiteit in Madrid. Hij heeft meerdere jaren ervaring in de blockchain sector, waar hij investeerde in startups, samenwerkte met teams, adviseerde en deelnam aan investeringsrondes. De combinatie van deze academische achtergrond en praktijkervaring met startups geeft hem de drive en expertise om BetterE tot een succes te maken."
     }
   ];
 
   return (
-    <section id="team" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="team" className="py-24 bg-gray-50">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-12">
         <h2 className="section-title">De BetterE Team</h2>
-        <p className="section-subtitle">
+        <p className="section-subtitle mb-10 max-w-230 mx-auto">
           BetterE is een Nederlandse technologie-startup die oplossingen ontwikkelt voor veilig en duurzaam batterijgebruik. 
           Ons team combineert expertise in energie, technologie en ondernemerschap. Onze missie: de levensduur van elke batterij 
           verlengen, e-waste verminderen en de energietransitie veiliger en slimmer maken.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
               <div className="relative w-full h-80">
-                <div className="bg-gray-200 border-2 border-dashed w-full h-full flex items-center justify-center">
-                  <span className="text-gray-500">Team Member Photo</span>
-                </div>
+                <Image 
+                  src={member.image} 
+                  alt={member.name} 
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-accent mb-4">{member.role}</p>
-                <p className="text-gray-600">{member.description}</p>
+                <p className="text-green-600 mb-4">{member.role}</p>
+                <p className="text-gray-600 line-clamp-3 mb-3">{member.description}</p>
+                <ReadMoreTooltipButton content={member.description} />
               </div>
             </div>
           ))}
