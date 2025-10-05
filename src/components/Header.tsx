@@ -110,7 +110,7 @@ const Header = () => {
               await sendEmail('Pre-order aanvraag', html, email);
             }}>
               <div>
-                <label htmlFor="preorder-name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="preorder-name"  className="block text-sm font-medium text-gray-700 mb-1">
                   Naam
                 </label>
                 <input
