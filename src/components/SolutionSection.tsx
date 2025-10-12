@@ -14,24 +14,24 @@ const SolutionSection = () => {
           <span className="absolute inset-0 -z-0 rounded-xl bg-600/90 px-3 -mx-2"></span>
         </span> </h2>
 
-        <p className="max-w-4xl mx-auto text-center font-medium text-lg">
+        <p className="max-w-4xl mx-auto text-center font-medium text-lg px-4">
           BetterE is een innovatief product dat een nieuwe manier biedt om het laadproces van lithium-ion batterijen
           van e-bikes, e-steps en e-scooters te beheren. Door overladen – een belangrijke oorzaak van batterijdegradatie –
           te voorkomen, verdubbelt BetterE de levensduur.
         </p>
 
-        <div className="flex flex-col md:flex-row items-center gap-12 mt-12">
-          <div className="md:w-1/2">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 px-4">
+          <div className="md:w-1/2 w-full">
             <img
               src="/better_E_product_image.png"
               alt="BetterE Product"
-              className="w-full h-96 object-cover rounded-xl"
+              className="w-full h-auto object-cover rounded-xl"
             />
           </div>
 
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 w-full">
             <div className="space-y-8">
-              <div className="border-l-4 border-green-600 pl-6 ">
+              <div className="border-l-4 border-green-600 pl-6">
                 <h3 className="text-2xl font-bold mb-3">Duurzaamheid</h3>
                 <p className="text-gray-600 mb-3 line-clamp-2">
                   Lithium-ion batterijen gebruiken schaarse metalen. BetterE verlengt de levensduur 1,5–2 keer,
@@ -48,7 +48,7 @@ const SolutionSection = () => {
                 />
               </div>
 
-              <div className="border-l-4 border-green-600 pl-6 ">
+              <div className="border-l-4 border-green-600 pl-6">
                 <h3 className="text-2xl font-bold mb-3">Veiligheid</h3>
                 <p className="text-gray-600 mb-3 line-clamp-2">
                   BetterE bewaakt het laadproces en stopt direct bij afwijkingen. Het checkt vermogen, temperatuur en celspanningen,

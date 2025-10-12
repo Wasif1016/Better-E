@@ -2,24 +2,36 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
   const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openPreOrderModal = () => {
     setIsPreOrderOpen(true);
     setIsPartnershipOpen(false);
+    setIsMenuOpen(false);
   };
 
   const openPartnershipModal = () => {
     setIsPartnershipOpen(true);
     setIsPreOrderOpen(false);
+    setIsMenuOpen(false);
   };
 
   const closeModal = () => {
     setIsPreOrderOpen(false);
     setIsPartnershipOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const sendEmail = async (subject: string, html: string, replyTo?: string) => {
@@ -42,7 +54,7 @@ const Header = () => {
   return (
     <>
       <header className="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-14 py-4 flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Image 
@@ -50,11 +62,11 @@ const Header = () => {
               alt="BetterE Logo" 
               width={120} 
               height={40} 
-              className="object-contain h-12 w-auto"
+              className="object-contain h-10 w-auto"
             />
           </div>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
             {['Probleem', 'Oplossing', 'Impact', 'Partners', 'Team', 'FAQ'].map((item) => (
               <a 
@@ -67,8 +79,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Buttons */}
-          <div className="flex space-x-4">
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex space-x-4">
             <button 
               onClick={openPreOrderModal}
               className="btn-primary text-sm"
@@ -82,7 +94,48 @@ const Header = () => {
               Retail & verzekeraars
             </button>
           </div>
+
+          {/* Mobile menu button */}
+          <button 
+            onClick={toggleMenu}
+            className="md:hidden text-gray-700 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100">
+            <div className="px-4 py-2 space-y-1">
+              {['Probleem', 'Oplossing', 'Impact', 'Partners', 'Team', 'FAQ'].map((item) => (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`} 
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  onClick={closeMenu}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+            <div className="px-4 py-4 space-y-3 border-t border-gray-100">
+              <button 
+                onClick={openPreOrderModal}
+                className="w-full btn-primary text-sm py-2"
+              >
+                Pre-order
+              </button>
+              <button 
+                onClick={openPartnershipModal}
+                className="w-full btn-secondary text-sm py-2"
+              >
+                Retail & verzekeraars
+              </button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Pre-order Modal */}

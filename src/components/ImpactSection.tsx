@@ -44,26 +44,26 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section id="impact" className="py-24 bg-gray-50">
-      <div className="max-w-{1400px} px-4">
+    <section id="impact" className="py-16 md:py-24 bg-gray-50">
+      <div className="max-w-[1400px] mx-auto px-4">
         <h2 className="section-title">Gemeten Impact</h2>
-        <p className="section-subtitle px-50">
+        <p className="section-subtitle px-4 md:px-50">
           Onderzoek toont aan dat BetterE haalbaar is, inspeelt op een duidelijke behoefte en bijdraagt aan een duurzamere wereld.
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 px-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white hover:bg-foreground/[0.02] p-6 shadow-sm border border-gray-100 ">
-              <div className="text-4xl font-bold text-black mb-2">{stat.value}</div>
-              <div className=" font-medium text-gray-800">{stat.label}</div>
+            <div key={index} className="bg-white hover:bg-foreground/[0.02] p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl md:text-4xl font-bold text-black mb-2">{stat.value}</div>
+              <div className="font-medium text-gray-800">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Redesigned Impact Features in Grid */}
         <TooltipProvider>
-          <div className="grid grid-cols-1 md:grid-cols-4 px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 md:mt-12 px-0 md:px-8">
             {impactFeatures.map((feature) => (
               <div key={feature.id} className="h-full bg-white hover:bg-foreground/[0.02] p-6 shadow-sm border border-gray-100 flex flex-col">
                 <div className="gap-2 flex flex-col h-full justify-between">
@@ -96,7 +96,7 @@ const ImpactSection = () => {
                       </div>
                     </div>
                     <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                    <p className="text-gray-600 mb-3">
+                    <p className="text-gray-600 mb-3 text-sm md:text-base">
                       {feature.subtitle}
                     </p>
                   </div>

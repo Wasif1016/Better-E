@@ -63,8 +63,8 @@ const Hero = () => {
     <section className="hero-section pt-20">
       <div className="max-w-[1400px] mx-auto w-full px-4 pt-12 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
-        <div className="mb-8 lg:mb-0 lg:pr-10">
-          <h1 className="text-4xl md:text-5xl lg:text-5xl text-nowrap font-extrabold leading-tight mb-4">
+        <div className="mb-8 lg:mb-0 lg:pr-10 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-nowrap font-extrabold leading-tight mb-4">
             De Universele Laadlimiet
           </h1>
           <p className="text-medium text-gray-600 mb-6 max-w-2xl">
@@ -75,7 +75,7 @@ const Hero = () => {
           <div className="space-y-5 mb-6">
             {bulletPoints.map((point, index) => (
               <div key={index} className="bullet-point flex items-start">
-                <div className="bg-green-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white">
+                <div className="bg-green-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
                   {point.icon}
                 </div>
                 <div className="ml-4">
@@ -103,14 +103,14 @@ const Hero = () => {
         </div>
 
         {/* Product Image */}
-        <div className="flex justify-center items-center">
-          <div className="w-full max-w-lg aspect-square flex justify-center item-center">
+        <div className="flex justify-center items-center w-full mt-8 lg:mt-0">
+          <div className="w-full max-w-lg aspect-square flex justify-center items-center">
             <Image
               src="/better_E_product_image.png"
               alt="BetterE Product"
               width={800}
               height={800}
-              className="rounded-lg object-contain"
+              className="rounded-lg object-contain w-full h-auto"
             />
           </div>
         </div>

@@ -23,12 +23,12 @@ export default function Home() {
         <section id="probleem" className="py-16 bg-gray-50">
           <div className="max-w-[1400px] mx-auto px-4">
             <h2 className="section-title">Het Probleem</h2>
-            <p className="section-subtitle px-80">
+            <p className="section-subtitle px-4 md:px-80">
               Accu's slijten te vroeg, laden kan risicovol zijn en vervanging zorgt voor hoge kosten en e-waste.
             </p>
             
             <div className="flex flex-col md:flex-row gap-6 mt-12 justify-center max-w-5xl mx-auto">
-              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+              <div className="bg-white py-6 px-8 w-full md:w-fit shadow-lg rounded-lg border border-gray-100 text-center">
                 <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BatteryCharging className="h-8 w-8 text-white" />
                 </div>
@@ -38,7 +38,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+              <div className="bg-white py-6 px-8 w-full md:w-fit shadow-lg rounded-lg border border-gray-100 text-center">
                 <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                   <ShieldAlert className="h-8 w-8 text-white" />
                 </div>
@@ -48,7 +48,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="bg-white py-6 px-8 w-fit shadow-lg rounded-lg border border-gray-100 text-center">
+              <div className="bg-white py-6 px-8 w-full md:w-fit shadow-lg rounded-lg border border-gray-100 text-center">
                 <div className="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Trash2 className="h-8 w-8 text-white" />
                 </div>

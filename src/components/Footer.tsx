@@ -17,27 +17,27 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-secondary py-12">
+    <footer className="bg-primary text-secondary py-8 md:py-12">
       <div className="max-w-[1400px] mx-auto px-4 flex flex-col items-center">
         {/* Logo */}
-        <div className="mb-4">
-          <div className="w-full border-t border-black mb-4"></div>
+        <div className="mb-4 w-full">
+          <div className="w-full border-t border-gray-300 mb-4"></div>
           <div className="bg-transparent rounded-lg flex flex-col items-center py-4 px-6">
             <a href="#hero" onClick={handleLogoClick} aria-label="Scroll to Hero">
               <img
                 src="/BetterE_LOGO7 (2).png"
                 alt="BetterE Logo"
-                className="h-16 w-auto mb-2 cursor-pointer"
+                className="h-12 md:h-16 w-auto mb-2 cursor-pointer"
               />
             </a>
           </div>
         </div>
         {/* Copyright */}
-        <div className="text-center text-gray-400 mb-2">
+        <div className="text-center text-gray-400 text-sm mb-2">
           <p>&copy; {new Date().getFullYear()} BetterE. Alle rechten voorbehouden.</p>
         </div>
         {/* Developed by */}
-        <div className="text-center text-gray-500 text-sm">
+        <div className="text-center text-gray-500 text-xs md:text-sm">
           <p>Developed by Wasif Ali Khan</p>
         </div>
       </div>

@@ -29,19 +29,19 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
+    <section id="faq" className="py-16 md:py-20 bg-gray-50">
       <div className="max-w-[1400px] mx-auto px-4 lg:px-12">
-        <h2 className="text-6xl md:text-4xl font-extrabold tracking-tight text-center">Veelgestelde vragen</h2>
-        <p className="text-center text-gray-500 mt-2">Vind antwoorden op veelgestelde vragen over onze diensten</p>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-center">Veelgestelde vragen</h2>
+        <p className="text-center text-gray-500 mt-2 px-4">Vind antwoorden op veelgestelde vragen over onze diensten</p>
 
-        <div className="flex flex-col rounded-2x py-2 px-10 justify-center max-w-4xl mx-auto text-green-600 ">
+        <div className="flex flex-col rounded-2x py-2 px-4 md:px-10 justify-center max-w-4xl mx-auto text-green-600 mt-8 md:mt-12">
           {faqs.map((faq, index) => (
             <div key={index} className="group">
               <button
-                className="w-full py-5 text-left flex justify-between items-center gap-6 border-b border-black hover:bg-gray-50 px-1 cursor-pointer"
+                className="w-full py-5 text-left flex justify-between items-center gap-4 md:gap-6 border-b border-black hover:bg-gray-50 px-1 md:px-4 cursor-pointer"
                 onClick={() => toggleQuestion(index)}
               >
-                <h3 className="text-lg font-medium text-green-600 group-hover:text-black transition-colors duration-200">{faq.question}</h3>
+                <h3 className="text-base md:text-lg font-medium text-green-600 group-hover:text-black transition-colors duration-200">{faq.question}</h3>
                 <span className="shrink-0 text-green-600 group-hover:text-black transition-colors duration-200">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -55,14 +55,14 @@ const FAQSection = () => {
               </button>
 
               {openQuestion === index && (
-                <div className="py-5 text-foreground font-medium">
-                  <p className="leading-relaxed">{faq.answer}</p>
+                <div className="py-5 text-foreground font-medium px-1 md:px-4">
+                  <p className="leading-relaxed text-sm md:text-base">{faq.answer}</p>
                 </div>
               )}
             </div>
           ))}
 
-          <div className="text-center text-gray-500 mt-10">
+          <div className="text-center text-gray-500 mt-8 md:mt-10 text-sm">
             <span>Kan je niet vinden wat je zoekt? </span>
             <a href="#contact" className="text-green-600 underline underline-offset-4">Neem contact op</a>
           </div>
