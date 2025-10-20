@@ -48,7 +48,17 @@ const Footer = () => {
         </div>
         {/* Developed by */}
         <div className="text-center    text-xs md:text-sm">
-          <p>Developed by Wasif Ali Khan</p>
+          <p>
+            Developed by{" "}
+            <a
+              href="https://wa.me/923144174625?text=Hello!%20Need%20A%20Website%20Assistance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline hover:text-primary/80 transition-colors"
+            >
+              Wasif Ali Khan
+            </a>
+          </p>
         </div>
       </div>
     </footer>
