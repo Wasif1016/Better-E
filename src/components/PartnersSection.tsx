@@ -10,7 +10,7 @@ const PartnersSection = () => {
   ];
 
   return (
-    <section id="partners" className="py-12">
+    <section id="partners" className="pt-12 pb-28">
       <div className="max-w-[1400px] mx-auto px-4">
         <h2 className="section-title">Partners</h2>
         
@@ -32,7 +32,7 @@ const PartnersSection = () => {
                   className="object-contain transition-transform duration-300 hover:scale-105 h-20 w-auto md:h-24"
                 />
               </div>
-              <h3 className="text-lg md:text-xl pt-2 font-bold underline">{partner.name}</h3>
+              {/* <h3 className="text-lg md:text-xl pt-2 font-bold underline">{partner.name}</h3> */}
             </Link>
           ))}
         </div>

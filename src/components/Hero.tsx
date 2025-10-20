@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Heart, Lock, Zap } from 'lucide-react';
+import { Leaf, Flame, Zap } from 'lucide-react';
 
 const Hero = () => {
   const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
@@ -43,14 +43,14 @@ const Hero = () => {
   // Bullet point data with icons
   const bulletPoints = [
     {
-      icon: <Heart className="h-6 w-6" />,
+      icon: <Leaf className="h-6 w-6" />,
       title: "Duurzaamheid",
       description: "tot 50% minder e-waste door langere levensduur"
     },
     {
-      icon: <Lock className="h-6 w-6" />,
+      icon: <Flame className="h-6 w-6" />,
       title: "Veiligheid eerst",
-      description: "intelligente laadlimieten en thermische bescherming"
+      description: "voorkom brandgevaar door slimme laadlimieten"
     },
     {
       icon: <Zap className="h-6 w-6" />,
@@ -60,14 +60,14 @@ const Hero = () => {
   ];
 
   return (
-    <section className="hero-section pt-20">
-      <div className="max-w-[1400px] mx-auto w-full px-4 pt-12 flex flex-col lg:flex-row items-center">
+    <section className="max-w-[1400px] mx-auto px-[2rem] pt-16 mb-16">
+      <div className="w-full px-4 pt-12 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="mb-8 lg:mb-0 lg:pr-10 w-full">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-nowrap font-extrabold leading-tight mb-4">
             De Universele Laadlimiet
           </h1>
-          <p className="text-medium text-gray-600 mb-6 max-w-2xl">
+          <p className="font-medium text-lg text-foreground/90 mb-6 max-w-2xl">
             BetterE is een universele slimme laadadapter voor e‑bikes, e-steps en e-scooters.
             Verdubbel de acculevensduur, verlaag brandrisico en laad zonder gedoe.
           </p>
@@ -75,29 +75,23 @@ const Hero = () => {
           <div className="space-y-5 mb-6">
             {bulletPoints.map((point, index) => (
               <div key={index} className="bullet-point flex items-start">
-                <div className="bg-green-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
+                <div className="bg-primary text-background w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
                   {point.icon}
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold">{point.title}</h3>
-                  <p className="text-gray-600">{point.description}</p>
+                  <p className="text-foreground/90">{point.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <button
               onClick={openPreOrderModal}
-              className="btn-primary text-lg"
+              className="bg-primary text-background text-lg py-2 px-6 lg:px-8 rounded-2xl"
             >
               Pre-order
-            </button>
-            <button
-              onClick={openPartnershipModal}
-              className="btn-secondary text-lg"
-            >
-              Retail & verzekeraars
             </button>
           </div>
         </div>
@@ -127,7 +121,7 @@ const Hero = () => {
               ✕
             </button>
             <h2 className="text-2xl font-bold mb-4">Pre-order BetterE</h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4 text-foreground/90">
               Laat uw gegevens achter en ontvang updates over de beschikbaarheid en levering.
             </p>
             <form className="space-y-4" onSubmit={async (e) => {
@@ -208,7 +202,7 @@ const Hero = () => {
               ✕
             </button>
             <h2 className="text-2xl font-bold mb-4">Samenwerken met BetterE</h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4 text-foreground/90">
               Laat uw bedrijfsgegevens achter en we nemen zo spoedig mogelijk contact met u op.
             </p>
             <form className="space-y-4" onSubmit={async (e) => {
