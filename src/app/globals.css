@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -278,6 +277,97 @@ html {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Animation keyframes for shadcn/ui components */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-from-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -285,4 +375,65 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Animation utilities */
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+.animate-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-out {
+  animation: fade-out 0.2s ease-out;
+}
+
+.fade-in-0 {
+  animation: fade-in 0s ease-out;
+}
+
+.fade-out-0 {
+  animation: fade-out 0s ease-out;
+}
+
+.fade-in-50 {
+  animation: fade-in 0.5s ease-out;
+}
+
+.slide-in-from-top-1 {
+  animation: slide-in-from-top 0.1s ease-out;
+}
+
+.slide-in-from-top-2 {
+  animation: slide-in-from-top 0.2s ease-out;
+}
+
+.slide-in-from-top-5 {
+  animation: slide-in-from-top 0.5s ease-out;
+}
+
+.slide-in-from-bottom-1 {
+  animation: slide-in-from-bottom 0.1s ease-out;
+}
+
+.slide-in-from-left-1 {
+  animation: slide-in-from-left 0.1s ease-out;
+}
+
+.slide-in-from-right-1 {
+  animation: slide-in-from-right 0.1s ease-out;
+}
+
+.zoom-in-95 {
+  animation: zoom-in 0.2s ease-out;
+}
+
+.zoom-out-95 {
+  animation: zoom-out 0.2s ease-out;
 }
