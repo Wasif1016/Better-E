@@ -87,6 +87,7 @@ const Hero = () => {
           </div>
         </div>
 
+
         {/* Product Image */}  
         <div className="w-full lg:w-1/2 flex justify-center items-center">
           <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-square flex justify-center items-center">
