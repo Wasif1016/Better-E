@@ -56,7 +56,7 @@ const Hero = () => {
       <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         {/* Text Content */}
         <div className="w-full lg:w-1/2 lg:pr-8">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold leading-tight mb-4 sm:mb-6 block">
+          <h1 className="text-xl mt-14 sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold leading-tight mb-4 sm:mb-6 block">
             De Universele Laadlimiet
           </h1>
           <p className="font-medium text-base sm:text-lg lg:text-xl text-foreground/90 mb-6 sm:mb-8 max-w-2xl">
