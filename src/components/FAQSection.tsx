@@ -29,23 +29,29 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-16 md:py-20 bg-gray-50">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-12">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-center">Veelgestelde vragen</h2>
-        <p className="text-center text-gray-500 mt-2 px-4">Vind antwoorden op veelgestelde vragen over onze diensten</p>
+    <section id="faq" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-center mb-2 sm:mb-4">
+          Veelgestelde vragen
+        </h2>
+        <p className="text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 px-4">
+          Vind antwoorden op veelgestelde vragen over onze diensten
+        </p>
 
-        <div className="flex flex-col rounded-2x py-2 px-4 md:px-10 justify-center max-w-4xl mx-auto text-green-600 mt-8 md:mt-12">
+        <div className="flex flex-col rounded-2xl py-2 px-2 sm:px-4 lg:px-8 justify-center max-w-4xl mx-auto text-green-600">
           {faqs.map((faq, index) => (
             <div key={index} className="group">
               <button
-                className="w-full py-5 text-left flex justify-between items-center gap-4 md:gap-6 border-b border-black hover:bg-gray-50 px-1 md:px-4 cursor-pointer"
+                className="w-full py-4 sm:py-5 text-left flex justify-between items-start gap-3 sm:gap-4 border-b border-gray-300 hover:bg-gray-50 px-2 sm:px-4 cursor-pointer"
                 onClick={() => toggleQuestion(index)}
               >
-                <h3 className="text-base md:text-lg font-medium text-green-600 group-hover:text-black transition-colors duration-200">{faq.question}</h3>
-                <span className="shrink-0 text-green-600 group-hover:text-black transition-colors duration-200">
+                <h3 className="text-sm sm:text-base lg:text-lg font-medium text-green-600 group-hover:text-black transition-colors duration-200 leading-relaxed">
+                  {faq.question}
+                </h3>
+                <span className="shrink-0 text-green-600 group-hover:text-black transition-colors duration-200 mt-1">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className={`h-5 w-5 transition-transform duration-300 ${openQuestion === index ? 'rotate-180' : ''}`} 
+                    className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 ${openQuestion === index ? 'rotate-180' : ''}`} 
                     viewBox="0 0 20 20" 
                     fill="currentColor"
                   >
@@ -55,16 +61,18 @@ const FAQSection = () => {
               </button>
 
               {openQuestion === index && (
-                <div className="py-5 text-foreground font-medium px-1 md:px-4">
-                  <p className="leading-relaxed text-sm md:text-base">{faq.answer}</p>
+                <div className="py-4 sm:py-5 text-foreground font-medium px-2 sm:px-4">
+                  <p className="leading-relaxed text-xs sm:text-sm lg:text-base">{faq.answer}</p>
                 </div>
               )}
             </div>
           ))}
 
-          <div className="text-center text-gray-500 mt-8 md:mt-10 text-sm">
+          <div className="text-center text-gray-500 mt-6 sm:mt-8 lg:mt-10 text-xs sm:text-sm">
             <span>Kan je niet vinden wat je zoekt? </span>
-            <a href="#contact" className="text-green-600 underline underline-offset-4">Neem contact op</a>
+            <a href="#contact" className="text-green-600 underline underline-offset-4 hover:text-green-700 transition-colors">
+              Neem contact op
+            </a>
           </div>
         </div>
       </div>

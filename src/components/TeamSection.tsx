@@ -33,17 +33,19 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-foreground/10">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-12">
-        <h2 className="section-title">De BetterE Team</h2>
-        <p className="section-subtitle mb-8 md:mb-10 max-w-2xl mx-auto px-4">
-        BetterE is een Nederlandse technologie-startup die oplossingen ontwikkelt voor veilig en duurzaam batterijgebruik. Ons team combineert expertise in energie, technologie en ondernemerschap.
+    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-foreground/10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
+          De BetterE Team
+        </h2>
+        <p className="text-base sm:text-lg lg:text-xl text-center text-foreground/80 mb-8 sm:mb-12 max-w-3xl mx-auto">
+          BetterE is een Nederlandse technologie-startup die oplossingen ontwikkelt voor veilig en duurzaam batterijgebruik. Ons team combineert expertise in energie, technologie en ondernemerschap.
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-              <div className="relative w-full h-64 md:h-80">
+              <div className="relative w-full h-48 sm:h-56 lg:h-64">
                 <Image 
                   src={member.image} 
                   alt={member.name} 
@@ -51,20 +53,20 @@ const TeamSection = () => {
                   className="object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-green-600 mb-4 text-sm md:text-base">{member.role}</p>
-                <p className={`text-foreground/90 text-sm mb-3 ${expandedMember === member.name ? '' : 'line-clamp-3'}`}>
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold mb-1">{member.name}</h3>
+                <p className="text-green-600 mb-3 sm:mb-4 text-sm sm:text-base">{member.role}</p>
+                <p className={`text-foreground/90 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed ${expandedMember === member.name ? '' : 'line-clamp-3'}`}>
                   {member.description}
                 </p>
                 <button
                   onClick={() => toggleMember(member.name)}
-                  className="cursor-pointer bg-background flex items-center gap-2 font-medium transition-colors border px-3 py-1 w-full justify-center"
+                  className="cursor-pointer bg-background flex items-center gap-2 text-xs sm:text-sm font-medium transition-colors border border-gray-300 hover:border-primary px-3 py-2 w-full justify-center rounded-lg hover:bg-primary/5"
                   aria-expanded={expandedMember === member.name}
                 >
                   <span>{expandedMember === member.name ? 'Minder' : 'Lees meer'}</span>
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${
                       expandedMember === member.name ? 'rotate-180' : ''
                     }`}
                   />

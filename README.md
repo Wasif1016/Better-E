@@ -6,7 +6,7 @@ Create a file named `.env.local` in the project root with:
 SMTP_USER=81abe7001@smtp-brevo.com
 SMTP_PASS=w3ApFNx1bg4fW8mr
 SENDER_EMAIL=web.dev.haseeb@gmail.com
-COMPANY_EMAIL=wasifdevelopsite@gmail.com
+COMPANY_EMAIL=Pepijn@kluytmans.com
 ```
 
 Restart the dev server after adding envs.

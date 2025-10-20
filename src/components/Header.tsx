@@ -66,7 +66,7 @@ const Header = () => {
   return (
     <>
       <header className="fixed w-full bg-foreground text-background bg-opacity-90 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-[2rem] py-4 flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Image
@@ -74,7 +74,7 @@ const Header = () => {
               alt="BetterE Logo"
               width={120}
               height={40}
-              className="object-contain h-10 w-auto"
+              className="object-contain h-8 sm:h-10 w-auto"
             />
           </div>
 

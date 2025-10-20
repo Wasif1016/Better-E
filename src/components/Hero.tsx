@@ -5,21 +5,13 @@ import Image from 'next/image';
 import { Leaf, Flame, Zap } from 'lucide-react';
 
 const Hero = () => {
-  const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
   const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
-
-  const openPreOrderModal = () => {
-    setIsPreOrderOpen(true);
-    setIsPartnershipOpen(false);
-  };
 
   const openPartnershipModal = () => {
     setIsPartnershipOpen(true);
-    setIsPreOrderOpen(false);
   };
 
   const closeModal = () => {
-    setIsPreOrderOpen(false);
     setIsPartnershipOpen(false);
   };
 
@@ -60,36 +52,35 @@ const Hero = () => {
   ];
 
   return (
-    <section className="max-w-[1400px] mx-auto px-[2rem] pt-16 mb-16">
-      <div className="w-full px-4 pt-12 flex flex-col lg:flex-row items-center">
+    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 mb-12 sm:mb-16">
+      <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         {/* Text Content */}
-        <div className="mb-8 lg:mb-0 lg:pr-10 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-nowrap font-extrabold leading-tight mb-4">
+        <div className="w-full lg:w-1/2 lg:pr-8">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-18 xl:text-4xl font-extrabold leading-tight mb-4 sm:mb-6 block">
             De Universele Laadlimiet
           </h1>
-          <p className="font-medium text-lg text-foreground/90 mb-6 max-w-2xl">
+          <p className="font-medium text-base sm:text-lg lg:text-xl text-foreground/90 mb-6 sm:mb-8 max-w-2xl">
             BetterE is een universele slimme laadadapter voor e‑bikes, e-steps en e-scooters.
             Verdubbel de acculevensduur, verlaag brandrisico en laad zonder gedoe.
           </p>
 
-          <div className="space-y-5 mb-6">
+          <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
             {bulletPoints.map((point, index) => (
-              <div key={index} className="bullet-point flex items-start">
-                <div className="bg-primary text-background w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
+              <div key={index} className="flex items-start gap-3 sm:gap-4">
+                <div className="bg-primary text-background w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
                   {point.icon}
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold">{point.title}</h3>
-                  <p className="text-foreground/90">{point.description}</p>
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg font-semibold mb-1">{point.title}</h3>
+                  <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">{point.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
-              onClick={openPreOrderModal}
-              className="bg-primary text-background text-lg py-2 px-6 lg:px-8 rounded-2xl"
+              className="bg-primary text-background text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-2xl hover:bg-primary/90 transition-colors duration-200 w-full sm:w-auto"
             >
               Pre-order
             </button>
@@ -97,115 +88,36 @@ const Hero = () => {
         </div>
 
         {/* Product Image */}
-        <div className="flex justify-center items-center w-full mt-8 lg:mt-0">
-          <div className="w-full max-w-lg aspect-square flex justify-center items-center">
+        <div className="w-full lg:w-1/2 flex justify-center items-center">
+          <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-square flex justify-center items-center">
             <Image
               src="/better_E_product_image.png"
               alt="BetterE Product"
               width={800}
               height={800}
               className="rounded-lg object-contain w-full h-auto"
+              priority
             />
           </div>
         </div>
       </div>
 
-      {/* Pre-order Modal */}
-      {isPreOrderOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Pre-order BetterE</h2>
-            <p className="mb-4 text-foreground/90">
-              Laat uw gegevens achter en ontvang updates over de beschikbaarheid en levering.
-            </p>
-            <form className="space-y-4" onSubmit={async (e) => {
-              e.preventDefault();
-              const form = e.currentTarget as HTMLFormElement;
-              const name = (form.querySelector('#preorder-name') as HTMLInputElement).value;
-              const email = (form.querySelector('#preorder-email') as HTMLInputElement).value;
-              const phone = (form.querySelector('#preorder-phone') as HTMLInputElement).value;
-              const message = (form.querySelector('#preorder-message') as HTMLTextAreaElement).value;
-              const html = `<h3>Pre-order aanvraag</h3><p><b>Naam:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Telefoon:</b> ${phone}</p><p><b>Bericht:</b> ${message}</p>`;
-              await sendEmail('Pre-order aanvraag', html, email);
-            }}>
-              <div>
-                <label htmlFor="preorder-name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Naam
-                </label>
-                <input
-                  type="text"
-                  id="preorder-name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Uw naam"
-                />
-              </div>
-              <div>
-                <label htmlFor="preorder-email" className="block text-sm font-medium text-gray-700 mb-1">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="preorder-email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Uw e-mailadres"
-                />
-              </div>
-              <div>
-                <label htmlFor="preorder-phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Telefoonnummer
-                </label>
-                <input
-                  type="tel"
-                  id="preorder-phone"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Uw telefoonnummer"
-                />
-              </div>
-              <div>
-                <label htmlFor="preorder-message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Bericht
-                </label>
-                <textarea
-                  id="preorder-message"
-                  rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Laat een bericht achter over uw verwachtingen..."
-                ></textarea>
-              </div>
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="btn-primary w-full"
-                >
-                  Verzenden
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* Partnership Modal */}
       {isPartnershipOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6">
+          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 relative">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 text-xl sm:text-2xl"
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-4">Samenwerken met BetterE</h2>
-            <p className="mb-4 text-foreground/90">
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 pr-8">Samenwerken met BetterE</h2>
+            <p className="mb-4 sm:mb-6 text-sm sm:text-base text-foreground/90">
               Laat uw bedrijfsgegevens achter en we nemen zo spoedig mogelijk contact met u op.
             </p>
-            <form className="space-y-4" onSubmit={async (e) => {
+            <form className="space-y-3 sm:space-y-4" onSubmit={async (e) => {
               e.preventDefault();
               const form = e.currentTarget as HTMLFormElement;
               const company = (form.querySelector('#partnership-company') as HTMLInputElement).value;
@@ -223,7 +135,7 @@ const Hero = () => {
                 <input
                   type="text"
                   id="partnership-company"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
                   placeholder="Naam van uw bedrijf"
                 />
               </div>
@@ -234,7 +146,7 @@ const Hero = () => {
                 <input
                   type="text"
                   id="partnership-name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
                   placeholder="Uw naam"
                 />
               </div>
@@ -245,7 +157,7 @@ const Hero = () => {
                 <input
                   type="email"
                   id="partnership-email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
                   placeholder="Uw e-mailadres"
                 />
               </div>
@@ -256,7 +168,7 @@ const Hero = () => {
                 <input
                   type="tel"
                   id="partnership-phone"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
                   placeholder="Uw telefoonnummer"
                 />
               </div>
@@ -267,14 +179,14 @@ const Hero = () => {
                 <textarea
                   id="partnership-message"
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base resize-none"
                   placeholder="Laat een bericht achter over uw samenwerkingsidee..."
                 ></textarea>
               </div>
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="btn-primary w-full"
+                  className="w-full bg-primary text-background text-sm sm:text-base font-semibold py-3 sm:py-4 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-200"
                 >
                   Verzenden
                 </button>

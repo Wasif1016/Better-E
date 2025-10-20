@@ -32,35 +32,37 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="oplossing" className="">
-      <div className="max-w-[1400px] mx-auto px-4 py-20">
-        <h2 className="section-title"> <span className="relative inline-block align-middle ml-2">
-          <span className="relative z-10 text-foreground"> De BetterE Oplossing </span>
-          <span className="absolute inset-0 -z-0 rounded-xl bg-600/90 px-3 -mx-2"></span>
-        </span> </h2>
+    <section id="oplossing" className="py-12 sm:py-16 lg:py-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
+          <span className="relative inline-block align-middle">
+            <span className="relative z-10 text-foreground"> De BetterE Oplossing </span>
+            <span className="absolute inset-0 -z-0 rounded-xl bg-primary/20 px-3 -mx-2"></span>
+          </span>
+        </h2>
 
-        <p className="max-w-2xl text-foreground/80 mx-auto text-center font-medium text-lg px-4">
-        BetterE is een innovatief product dat e-bike-, e-step- en e-scooter batterijen slimmer en veiliger oplaadt, waardoor ze langer meegaan.
+        <p className="max-w-3xl text-foreground/80 mx-auto text-center font-medium text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 px-4">
+          BetterE is een innovatief product dat e-bike-, e-step- en e-scooter batterijen slimmer en veiliger oplaadt, waardoor ze langer meegaan.
         </p>
 
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 px-4">
-          <div className="md:w-1/2 w-full bg-foreground/5">
+        <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
+          <div className="w-full lg:w-1/2 bg-foreground/5 rounded-xl overflow-hidden">
             <img
               src="/3rd-section.gif"
               alt="BetterE Product"
-              className="w-full h-auto object-cover rounded-xl"
+              className="w-full h-auto object-cover"
             />
           </div>
 
-          <div className="md:w-1/2 w-full">
-            <div className="space-y-8">
+          <div className="w-full lg:w-1/2">
+            <div className="space-y-6 sm:space-y-8">
               {sections.map((section) => (
-                <div key={section.id} className="border-l-4 border-primary pl-4">
-                  <h3 className="text-2xl font-bold mb-3">{section.title}</h3>
-                  <p className="text-foreground/90 mb-3">{section.summary}</p>
+                <div key={section.id} className="border-l-4 border-primary pl-3 sm:pl-4">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3">{section.title}</h3>
+                  <p className="text-sm sm:text-base text-foreground/90 mb-3 sm:mb-4 leading-relaxed">{section.summary}</p>
                   <button
                     onClick={() => toggleSection(section.id)}
-                    className="cursor-pointer flex items-center gap-2  font-medium transition-colors border px-3 py-1 rounded-xl"
+                    className="cursor-pointer flex items-center gap-2 text-sm sm:text-base font-medium transition-colors border border-gray-300 hover:border-primary px-3 py-2 rounded-xl hover:bg-primary/5"
                     aria-expanded={expandedSection === section.id}
                   >
                     <span>{expandedSection === section.id ? 'Minder' : 'Lees meer'}</span>
@@ -72,7 +74,7 @@ const SolutionSection = () => {
                   </button>
                   {expandedSection === section.id && (
                     <div className="mt-3 pt-3 border-t border-gray-200 animate-in slide-in-from-top-2 duration-200">
-                      <p className="text-foreground/90">{section.details}</p>
+                      <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">{section.details}</p>
                     </div>
                   )}
                 </div>
