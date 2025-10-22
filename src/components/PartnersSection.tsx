@@ -11,7 +11,7 @@ const PartnersSection = () => {
 
   return (
     <section id="partners" className="pt-12 pb-28">
-      <div className="max-w-[1400px] mx-auto px-4">
+      <div className="max-w-[1500px] mx-auto px-4">
         <h2 className="section-title">Partners</h2>
         
         <div className="mt-8 flex flex-col md:flex-row bg-transparent justify-center max-w-5xl mx-auto gap-8 md:gap-0">

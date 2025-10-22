@@ -27,14 +27,14 @@ const TeamSection = () => {
     {
       name: "Godard Lensvelt",
       role: "Business Development",
-      image: "/Godard Lensvelt.webp",
+      image: "/Godard-Lensvelt.jpg",
       description: "Studeert Technische Bestuurskunde aan de TU Delft met een focus op Energie & Industrie en volgde een minor in Finance aan de Comillas Universiteit in Madrid. Hij heeft meerdere jaren ervaring in de blockchain sector, waar hij investeerde in startups, samenwerkte met teams, adviseerde en deelnam aan investeringsrondes. De combinatie van deze academische achtergrond en praktijkervaring met startups geeft hem de drive en expertise om BetterE tot een succes te maken."
     }
   ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-foreground/10">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-12">
+    <section id="team" className="py-16 md:py-24 bg-foreground/[0.015]">
+      <div className="max-w-[1500px] mx-auto px-4 lg:px-12">
         <h2 className="section-title">De BetterE Team</h2>
         <p className="section-subtitle mb-8 md:mb-10 max-w-2xl mx-auto px-4">
         BetterE is een Nederlandse technologie-startup die oplossingen ontwikkelt voor veilig en duurzaam batterijgebruik. Ons team combineert expertise in energie, technologie en ondernemerschap.
@@ -42,7 +42,7 @@ const TeamSection = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 px-4">
           {teamMembers.map((member, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div key={index} className="bg-background h-fit max-h-fit shrink-0 rounded-lg shadow-sm border border-gray-100 overflow-hidden">
               <div className="relative w-full h-64 md:h-80">
                 <Image 
                   src={member.image} 

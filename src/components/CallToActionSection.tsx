@@ -3,7 +3,7 @@ import React from 'react';
 const CallToActionSection = () => {
   return (
     <section id="cta" className="py-16 md:py-24">
-      <div className="max-w-[1400px] mx-auto px-4">
+      <div className="max-w-[1500px] mx-auto px-4">
 
         <div className="flex flex-col rounded-2xl bg-primary py-8 md:py-10 px-4 md:px-10 justify-center max-w-5xl mx-auto p-4 md:p-8">
           <h2 className="section-title">BetterE voor jou</h2>

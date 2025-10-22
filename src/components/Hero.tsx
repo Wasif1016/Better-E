@@ -60,7 +60,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="max-w-[1400px] mx-auto px-[2rem] pt-16 mb-16">
+    <section className="max-w-[1500px] mx-auto px-[2rem] pt-16 mb-16">
       <div className="w-full px-4 pt-12 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="mb-8 lg:mb-0 lg:pr-10 w-full">
@@ -89,7 +89,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <button
               onClick={openPreOrderModal}
-              className="bg-primary text-background text-lg py-2 px-6 lg:px-8 rounded-2xl"
+              className="cursor-pointer rounded-lg bg-primary text-background text-lg py-2 px-6 lg:px-8 hover:bg-primary/80"
             >
               Pre-order
             </button>

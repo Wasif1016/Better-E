@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { PartnershipModal } from "./PartnershipModal";
@@ -10,9 +10,34 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [partnershipOpen, setPartnershipOpen] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        // Always show header at the top
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide header
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show header
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const sendEmail = async (subject: string, html: string, replyTo?: string) => {
     try {
@@ -56,6 +81,7 @@ const Header = () => {
 
   const navItems = [
     "Probleem",
+    "Gebruik",
     "Oplossing",
     "Impact",
     "Partners",
@@ -65,8 +91,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed w-full bg-foreground text-background bg-opacity-90 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-[2rem] py-4 flex justify-between items-center">
+      <header 
+        className={`fixed w-full bg-background text-foreground z-50 border-b transition-transform duration-300 ease-in-out ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className="max-w-[1500px] mx-auto px-[2rem] py-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Image
@@ -93,7 +123,7 @@ const Header = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex space-x-3">
-            <button className="cursor-pointer py-2 px-5 bg-primary text-background rounded-xl">
+            <button className="cursor-pointer py-2 px-5 bg-primary text-background rounded-lg hover:bg-primary/80 border-2 border-primary">
               Pre-order
             </button>
             <PartnershipModal
@@ -101,7 +131,7 @@ const Header = () => {
               onOpenChange={setPartnershipOpen}
               onSubmit={handlePartnershipSubmit}
               trigger={
-                <button className="cursor-pointer py-2 px-5 bg-background text-foreground rounded-xl">
+                <button className="cursor-pointer py-2 px-5 bg-background text-foreground border-2 border-foreground rounded-lg hover:bg-gray-100">
                   Samenwerken
                 </button>
               }
@@ -120,7 +150,7 @@ const Header = () => {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-foreground text-background border-t border-gray-100">
+          <div className="md:hidden border-t border-gray-100">
             <div className="px-4 py-2 space-y-1">
               {navItems.map((item) => (
                 <a

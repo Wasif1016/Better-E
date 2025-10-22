@@ -22,7 +22,7 @@ export default function Home() {
 
         {/* Problem Section */}
         <section id="probleem" className="py-20 bg-foreground/5">
-          <div className="max-w-[1400px] mx-auto px-4">
+          <div className="max-w-[1500px] mx-auto px-4">
             <h2 className="section-title">Het Probleem</h2>
             <p className="section-subtitle px-4 md:px-80">
               Accu's slijten te vroeg, laden kan risicovol zijn en vervanging
