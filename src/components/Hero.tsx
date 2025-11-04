@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Leaf, Flame, Zap } from 'lucide-react';
+import { PreOrderModal } from './PreOrderModal';
 
 const Hero = () => {
   const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
+  const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
 
   const openPartnershipModal = () => {
     setIsPartnershipOpen(true);
@@ -52,44 +54,64 @@ const Hero = () => {
   ];
 
   return (
-    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 mb-12 sm:mb-16">
-      <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+    <section id="hero" className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-16 pb-12 sm:pb-16 lg:pb-20">
+      <div className="w-full flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
         {/* Text Content */}
         <div className="w-full lg:w-1/2 lg:pr-8">
-          <h1 className="text-xl mt-14 sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-extrabold leading-tight mb-4 sm:mb-6 block">
+          <h1 className="text-xl sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl mt-12 sm:mt-14 font-extrabold leading-tight mb-4 sm:mb-6 lg:mb-8 block">
             De Universele Laadlimiet
           </h1>
-          <p className="font-medium text-base sm:text-lg lg:text-xl text-foreground/90 mb-6 sm:mb-8 max-w-2xl">
+          <p className="font-medium text-sm sm:text-base lg:text-lg xl:text-xl text-foreground/90 mb-4 sm:mb-6 lg:mb-8 max-w-2xl">
             BetterE is een universele slimme laadadapter voor e‑bikes, e-steps en e-scooters.
             Verdubbel de acculevensduur, verlaag brandrisico en laad zonder gedoe.
           </p>
 
-          <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
+          {/* Product Image - Now before icons on mobile */}
+          <div className="w-full flex justify-center items-center mb-4 sm:mb-6 lg:hidden">
+            <div className="w-full max-w-xs sm:max-w-sm aspect-square flex justify-center items-center">
+              <Image
+                src="/better_E_product_image.png"
+                alt="BetterE Product"
+                width={800}
+                height={800}
+                className="rounded-lg object-contain w-full h-auto"
+                priority
+              />
+            </div>
+          </div>
+
+          <div className="space-y-3 sm:space-y-4 lg:space-y-5 mb-4 sm:mb-6 lg:mb-8">
             {bulletPoints.map((point, index) => (
-              <div key={index} className="flex items-start gap-3 sm:gap-4">
-                <div className="bg-primary text-background w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
+              <div key={index} className="flex items-start gap-2 sm:gap-3 lg:gap-4">
+                <div className="bg-primary text-background w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:text-white flex-shrink-0">
                   {point.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base sm:text-lg font-semibold mb-1">{point.title}</h3>
-                  <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">{point.description}</p>
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-1 sm:mb-2">{point.title}</h3>
+                  <p className="text-xs sm:text-sm lg:text-base text-foreground/90 leading-relaxed">{point.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button
-              className="bg-primary text-background text-base sm:text-lg font-semibold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-2xl hover:bg-primary/90 transition-colors duration-200 w-full sm:w-auto"
-            >
-              Pre-order
-            </button>
+            <PreOrderModal
+              open={isPreOrderOpen}
+              onOpenChange={setIsPreOrderOpen}
+              trigger={
+                <button
+                  className="bg-primary text-background text-sm sm:text-base lg:text-lg font-semibold py-2.5 sm:py-3 lg:py-4 px-5 sm:px-6 lg:px-8 xl:px-10 rounded-2xl hover:bg-primary/90 transition-colors duration-200 w-full sm:w-auto"
+                >
+                  Pre-order
+                </button>
+              }
+            />
           </div>
         </div>
 
 
-        {/* Product Image */}  
-        <div className="w-full lg:w-1/2 flex justify-center items-center">
+        {/* Product Image - Desktop only */}  
+        <div className="hidden lg:flex w-full lg:w-1/2 justify-center items-center">
           <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-square flex justify-center items-center">
             <Image
               src="/better_E_product_image.png"
@@ -137,7 +159,6 @@ const Hero = () => {
                   type="text"
                   id="partnership-company"
                   className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
-                  placeholder="Naam van uw bedrijf"
                 />
               </div>
               <div>
@@ -148,7 +169,6 @@ const Hero = () => {
                   type="text"
                   id="partnership-name"
                   className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
-                  placeholder="Uw naam"
                 />
               </div>
               <div>
@@ -159,7 +179,6 @@ const Hero = () => {
                   type="email"
                   id="partnership-email"
                   className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
-                  placeholder="Uw e-mailadres"
                 />
               </div>
               <div>
@@ -170,7 +189,6 @@ const Hero = () => {
                   type="tel"
                   id="partnership-phone"
                   className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
-                  placeholder="Uw telefoonnummer"
                 />
               </div>
               <div>
@@ -181,7 +199,6 @@ const Hero = () => {
                   id="partnership-message"
                   rows={3}
                   className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base resize-none"
-                  placeholder="Laat een bericht achter over uw samenwerkingsidee..."
                 ></textarea>
               </div>
               <div className="pt-2">

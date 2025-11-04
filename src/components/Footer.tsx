@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary/20 py-6 sm:py-8 lg:py-12">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Logo */}
         <div className="w-full">
           <div className="bg-transparent rounded-lg flex flex-col items-center py-3 sm:py-4 px-4 sm:px-6">
@@ -43,20 +43,6 @@ const Footer = () => {
           <p>
             &copy; {new Date().getFullYear()} BetterE. Alle rechten
             voorbehouden.
-          </p>
-        </div>
-        {/* Developed by */}
-        <div className="text-center text-xs sm:text-sm">
-          <p>
-            Developed by{" "}
-            <a
-              href="https://wa.me/923144174625?text=Hello!%20Need%20A%20Website%20Assistance"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary underline hover:text-primary/80 transition-colors"
-            >
-              Wasif Ali Khan
-            </a>
           </p>
         </div>
       </div>
