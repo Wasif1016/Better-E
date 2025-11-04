@@ -10,7 +10,7 @@ const PartnersSection = () => {
   ];
 
   return (
-    <section id="partners" className="py-12 sm:py-16 lg:py-20">
+    <section id="partners" className="pb-10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">Partners</h2>
         
