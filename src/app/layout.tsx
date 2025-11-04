@@ -16,6 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BetterE | De Universele Laadlimiet",
   description: "BetterE is een universele slimme laadadapter voor e‑bikes, e-steps en e-scooters. Verdubbel de acculevensduur, verlaag brandrisico en laad zonder gedoe.",
+  icons: {
+    icon: [
+      { url: "/BetterE_LOGO7 (2).png", sizes: "any" },
+      { url: "/BetterE_LOGO7 (2).png", type: "image/png" },
+    ],
+    apple: "/BetterE_LOGO7 (2).png",
+    shortcut: "/BetterE_LOGO7 (2).png",
+  },
 };
 
 export default function RootLayout({

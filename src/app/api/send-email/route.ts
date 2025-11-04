@@ -6,6 +6,77 @@ export const runtime = 'nodejs';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    
+    // Handle preorder email type
+    if (body.type === 'preorder') {
+      const { email } = body as { email: string };
+
+      if (!email) {
+        return NextResponse.json({ error: 'Missing email' }, { status: 400 });
+      }
+
+      const smtpUser = process.env.SMTP_USER as string;
+      const smtpPass = process.env.SMTP_PASS as string;
+      const senderEmail = process.env.SENDER_EMAIL as string;
+      const companyEmail = process.env.COMPANY_EMAIL as string;
+
+      if (!smtpUser || !smtpPass || !senderEmail || !companyEmail) {
+        return NextResponse.json({ error: 'Server email configuration missing' }, { status: 500 });
+      }
+
+      const transporter = nodemailer.createTransport({
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        secure: false,
+        auth: { user: smtpUser, pass: smtpPass },
+      });
+
+      await transporter.verify();
+
+      // Confirmation email to user
+      const userConfirmationHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #22c55e;">Bedankt voor je interesse!</h2>
+          <p>Beste gebruiker,</p>
+          <p>Bedankt voor je interesse in BetterE! We hebben je e-mailadres ontvangen en zullen je op de hoogte houden van de lancering en early-bird kortingen.</p>
+          <p>Je e-mailadres: <strong>${email}</strong></p>
+          <p>We nemen zo spoedig mogelijk contact met je op.</p>
+          <p>Met vriendelijke groet,<br>Het BetterE team</p>
+        </div>
+      `;
+
+      // Admin notification email
+      const adminNotificationHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2>Nieuwe Pre-order Aanmelding</h2>
+          <p>Er is een nieuwe aanmelding voor de BetterE pre-order ontvangen:</p>
+          <p><strong>E-mailadres:</strong> ${email}</p>
+          <p><strong>Datum:</strong> ${new Date().toLocaleString('nl-NL')}</p>
+        </div>
+      `;
+
+      // Send confirmation email to user
+      await transporter.sendMail({
+        from: senderEmail,
+        to: email,
+        subject: 'Bedankt voor je interesse in BetterE!',
+        html: userConfirmationHtml,
+        replyTo: senderEmail,
+      });
+
+      // Send notification to admin
+      await transporter.sendMail({
+        from: senderEmail,
+        to: companyEmail,
+        subject: 'Nieuwe Pre-order Aanmelding - BetterE',
+        html: adminNotificationHtml,
+        replyTo: email,
+      });
+
+      return NextResponse.json({ ok: true });
+    }
+
+    // Handle other email types (existing functionality)
     const { subject, html, to, replyTo } = body as { subject?: string; html?: string; to?: string; replyTo?: string };
 
     if (!html) {

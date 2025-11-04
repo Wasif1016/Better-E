@@ -80,7 +80,6 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                         id="company"
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-                        placeholder="Winkel / Verzekeraar / Fleet / OEM"
                       />
                     </div>
                     <div className="flex-1">
@@ -92,7 +91,6 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                         name="website"
                         id="website"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-                        placeholder="https://"
                       />
                     </div>
                   </div>
@@ -106,7 +104,6 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       id="name"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-                      placeholder="Naam"
                     />
                   </div>
                   <div>
@@ -119,7 +116,6 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       id="email"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-                      placeholder="naam@bedrijf.com"
                     />
                   </div>
                   <div>
@@ -131,7 +127,6 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       id="message"
                       rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-                      placeholder="Use-case, volumes, planning, KPI's..."
                     ></textarea>
                   </div>
                   <div className="flex items-start space-x-2">
