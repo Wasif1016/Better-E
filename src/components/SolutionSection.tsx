@@ -49,7 +49,7 @@ const SolutionSection = () => {
         </p>
 
         <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 lg:gap-12">
-          <div className="w-full lg:w-1/2 bg-foreground/5 rounded-xl overflow-hidden">
+          <div className="w-full lg:w-1/2 rounded-xl overflow-hidden bg-transparent">
             <img
               src="/3rd-section.gif"
               alt="BetterE Product"

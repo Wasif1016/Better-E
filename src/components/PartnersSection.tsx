@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 const PartnersSection = () => {
   const partners = [
-    { name: "GBO", url: "https://gbo.eu/", logo: "/Partner 1 innovation makers.png" },
-    { name: "VEDS Group", url: "https://www.vedsgroup.com/", logo: "/VEDS group Partner2.jpg" },
-    { name: "RVO", url: "https://www.rvo.nl/", logo: "/partner 3 Rijksdienst voor....jpg" }
+    { name: "GBO Innovation makers", url: "https://gbo.eu/", logo: "/GBO.jpg" },
+    { name: "VEDS Group", url: "https://www.vedsgroup.com/", logo: "/vedsgroup.png" },
+    { name: "RVO", url: "https://www.rvo.nl/", logo: "/rvo.png" }
   ];
 
   return (
-    <section id="partners" className="pb-10">
+    <section id="partners" className="py-10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">Partners</h2>
         

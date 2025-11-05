@@ -67,14 +67,14 @@ const Hero = () => {
           </p>
 
           {/* Product Image - Now before icons on mobile */}
-          <div className="w-full flex justify-center items-center mb-4 sm:mb-6 lg:hidden">
-            <div className="w-full max-w-xs sm:max-w-sm aspect-square flex justify-center items-center">
+          <div className="w-full flex justify-center items-center lg:mb-4 lg:hidden">
+            <div className="w-full max-w-xs sm:max-w-sm aspect-square flex justify-center items-center m-0 p-0">
               <Image
                 src="/better_E_product_image.png"
                 alt="BetterE Product"
                 width={800}
                 height={800}
-                className="rounded-lg object-contain w-full h-auto"
+                className="rounded-lg object-contain w-full h-auto m-0 p-0"
                 priority
               />
             </div>

@@ -33,7 +33,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-foreground/[0.015]">
+    <section id="team" className="py-10 sm:py-16 lg:py-10 bg-foreground/[0.015]">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">De BetterE Team</h2>
         <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-center text-foreground/80 mb-6 sm:mb-8 lg:mb-12 max-w-2xl mx-auto px-4">
@@ -43,12 +43,13 @@ const TeamSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamMembers.map((member, index) => (
             <div key={index} className="bg-background h-fit max-h-fit shrink-0 rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-              <div className="relative w-full aspect-[4/5]">
+              <div className="relative w-full aspect-[4/3]">
                 <Image 
                   src={member.image} 
                   alt={member.name} 
                   fill
-                  className="object-cover object-center w-full h-full transition-transform duration-300 hover:scale-105"
+                  // For the first image, set objectPosition top; otherwise center
+                  className={`object-cover ${index === 0 ? "object-top" : "object-center"} w-full h-full transition-transform duration-300 hover:scale-105`}
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   priority={index === 0}
                 />
@@ -66,9 +67,7 @@ const TeamSection = () => {
                 >
                   <span>{expandedMember === member.name ? 'Minder' : 'Lees meer'}</span>
                   <ChevronDown
-                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${
-                      expandedMember === member.name ? 'rotate-180' : ''
-                    }`}
+                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${expandedMember === member.name ? 'rotate-180' : ''}`}
                   />
                 </button>
               </div>

@@ -67,8 +67,8 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section id="impact" className="py-12 sm:py-16 lg:py-20">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="impact" className="">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pt-10">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">
           Gemeten Impact
         </h2>
@@ -79,8 +79,8 @@ const ImpactSection = () => {
         {/* Impact Features with Accordion */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {impactFeatures.map((feature) => (
-            <div key={feature.id} className="h-full bg-background hover:bg-foreground/[0.02] p-4 sm:p-6 shadow-sm border rounded-lg flex flex-col">
-              <div className="gap-2 flex flex-col h-full">
+            <div key={feature.id} className="h-full bg-background hover:bg-foreground/[0.02] p-4 sm:p-6 shadow-sm border rounded-lg flex flex-col text-center sm:text-left">
+              <div className="gap-2 flex flex-col h-full items-center sm:items-start">
                 {/* Icon */}
                 <div className="flex-shrink-0 mb-3 sm:mb-4 lg:mb-6">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center">
@@ -143,8 +143,8 @@ const ImpactSection = () => {
         </div>
 
         {/* Custom Statistics Content */}
-        <div className="flex flex-col items-center gap-4 sm:gap-6 mt-8 sm:mt-12 lg:mt-16 px-4 sm:px-8 bg-foreground/[0.02] py-8 sm:py-12 rounded-lg">
-          <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+        <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 flex flex-col items-center gap-4 sm:gap-6 mt-8 sm:mt-12 lg:mt-16 px-4 sm:px-8 bg-foreground/[0.02] py-8 sm:py-12 rounded-lg">
+          <div className="flex flex-col items-center text-center w-full">
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 lg:mb-4">
               Besparing per jaar
             </h3>
@@ -152,7 +152,7 @@ const ImpactSection = () => {
               Dankzij het verdubbelen van de levensduur verminder je elk jaar:
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 w-full max-w-4xl gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 w-full gap-4">
             {customStatistics.map((stat, index) => (
               <div
                 key={stat.id}

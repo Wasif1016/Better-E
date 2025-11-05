@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { PartnershipModal } from './PartnershipModal';
 
 const FAQSection = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
@@ -27,6 +28,43 @@ const FAQSection = () => {
       answer: "Het beperken van de laadcapaciteit verkleint het bereik iets, maar levert veel voordelen op: een langere levensduur van de batterij, meer veiligheid, lagere kosten en minder e-waste. Het volledige bereik kunt u nog steeds gebruiken wanneer dat echt nodig is – voor een optimale balans tussen prestaties en duurzaamheid."
     }
   ];
+
+  const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
+
+  const sendEmail = async (subject: string, html: string, replyTo?: string) => {
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, html, replyTo }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Failed");
+    } catch (err) {
+      console.error("Send email error", err);
+    }
+  };
+
+  const handlePartnershipSubmit = async (data: {
+    company: string;
+    website: string;
+    name: string;
+    email: string;
+    message: string;
+    consent: boolean;
+  }) => {
+    const html = `<h3>Contactverzoek (via FAQ)</h3><p><b>Bedrijf:</b> ${
+      data.company
+    }</p>${
+      data.website ? `<p><b>Website:</b> ${data.website}</p>` : ""
+    }<p><b>Contactpersoon:</b> ${data.name}</p><p><b>Email:</b> ${
+      data.email
+    }</p><p><b>Bericht:</b> ${data.message}</p><p><b>Toestemming gegeven:</b> ${
+      data.consent ? "Ja" : "Nee"
+    }</p>`;
+    await sendEmail("Contactverzoek", html, data.email);
+    setIsPartnershipOpen(false);
+  };
 
   return (
     <section id="faq" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
@@ -70,9 +108,16 @@ const FAQSection = () => {
 
           <div className="text-center text-gray-500 mt-6 sm:mt-8 lg:mt-10 text-xs sm:text-sm">
             <span>Kan je niet vinden wat je zoekt? </span>
-            <a href="#contact" className="text-green-600 underline underline-offset-4 hover:text-green-700 transition-colors">
-              Neem contact op
-            </a>
+            <PartnershipModal
+              open={isPartnershipOpen}
+              onOpenChange={setIsPartnershipOpen}
+              onSubmit={handlePartnershipSubmit}
+              trigger={
+                <button className="text-green-600 underline underline-offset-4 hover:text-green-700 transition-colors cursor-pointer">
+                  Neem contact op
+                </button>
+              }
+            />
           </div>
         </div>
       </div>

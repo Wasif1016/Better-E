@@ -54,15 +54,11 @@ const HowItWorksSection = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header - On top for desktop, before image on mobile */}
         <div className="mb-6 sm:mb-8 lg:mb-12 text-left lg:text-left" id="gebruik">
-          <p className="bg-primary text-background w-fit px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-3">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 sm:mb-3 text-foreground">
             ★ Hoe het werkt
-          </p>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-foreground">
-            Eenvoudig, veilig en slim opladen in drie stappen
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl text-foreground/80">
-            Kies een stap om de uitleg te zien. Links staat een statische
-            afbeelding van een e-bike die via BetterE wordt opgeladen.
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-foreground/80">
+            Eenvoudig, veilig en slim opladen in drie stappen
           </p>
         </div>
 
