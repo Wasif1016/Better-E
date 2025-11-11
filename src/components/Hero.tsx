@@ -158,7 +158,7 @@ const Hero = () => {
                 <input
                   type="text"
                   id="partnership-company"
-                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
+                  className="w-full px-3 py-2.5 sm:py-3 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -168,7 +168,7 @@ const Hero = () => {
                 <input
                   type="text"
                   id="partnership-name"
-                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
+                  className="w-full px-3 py-2.5 sm:py-3 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -178,7 +178,7 @@ const Hero = () => {
                 <input
                   type="email"
                   id="partnership-email"
-                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
+                  className="w-full px-3 py-2.5 sm:py-3 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -188,7 +188,7 @@ const Hero = () => {
                 <input
                   type="tel"
                   id="partnership-phone"
-                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base"
+                  className="w-full px-3 py-2.5 sm:py-3 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -198,7 +198,7 @@ const Hero = () => {
                 <textarea
                   id="partnership-message"
                   rows={3}
-                  className="w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm sm:text-base resize-none"
+                  className="w-full px-3 py-2.5 sm:py-3 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground text-sm sm:text-base resize-none"
                 ></textarea>
               </div>
               <div className="pt-2">

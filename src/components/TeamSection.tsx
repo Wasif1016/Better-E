@@ -15,7 +15,7 @@ const TeamSection = () => {
     {
       name: "Pepijn Kluijtmans",
       role: "Co-founder & Battery Specialist",
-      image: "/Pepijn Kluijtmans BetterE Team.jpg",
+      image: "/pepijn-kluijtmans.jpg",
       description: "Gespecialiseerd in solid-state batterijen, met onderzoek naar de invloed van roterende anionen in plastic kristallen op de geleidbaarheid van elektrolyten. Medeoprichter van PickMe, een duurzame tandenstoker-abonnementsstartup, met ervaring in management en fondsenwerving. Droeg binnen het TU Delft Ecorunner-team bij aan het ontwerp van ’s werelds meest efficiënte waterstofauto, leidde acquisitie en haalde meer dan €150.000 op. Pepijns expertise verbindt technologie en duurzaamheid, met focus op next-gen energieopslag."
     },
     {
@@ -33,7 +33,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-10 sm:py-16 lg:py-10 bg-foreground/[0.015]">
+    <section id="team" className="pt-4 pb-10 sm:pt-16 sm:pb-16 lg:pt-10 lg:pb-10 bg-foreground/[0.015]">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">De BetterE Team</h2>
         <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-center text-foreground/80 mb-6 sm:mb-8 lg:mb-12 max-w-2xl mx-auto px-4">
@@ -49,7 +49,7 @@ const TeamSection = () => {
                   alt={member.name} 
                   fill
                   // For the first image, set objectPosition top; otherwise center
-                  className={`object-cover ${index === 0 ? "object-top" : "object-center"} w-full h-full transition-transform duration-300 hover:scale-105`}
+                  className={`object-cover ${index === 0 ? "object-bottom" : "object-center"} w-full h-full transition-transform duration-300 hover:scale-105`}
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   priority={index === 0}
                 />

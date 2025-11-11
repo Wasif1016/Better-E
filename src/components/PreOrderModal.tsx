@@ -86,7 +86,7 @@ export const PreOrderModal: React.FC<PreOrderModalProps> = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+              className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
             />
           </div>
           {message && (

@@ -79,7 +79,7 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                         name="company"
                         id="company"
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                        className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
                       />
                     </div>
                     <div className="flex-1">
@@ -90,7 +90,7 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                         type="url"
                         name="website"
                         id="website"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                        className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
                       />
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       name="name"
                       id="name"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                      className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
                     />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       name="email"
                       id="email"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                      className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
                     />
                   </div>
                   <div>
@@ -126,7 +126,7 @@ export const PartnershipModal: React.FC<PartnershipModalProps> = ({
                       name="message"
                       id="message"
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                      className="w-full px-3 py-2 bg-background border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
                     ></textarea>
                   </div>
                   <div className="flex items-start space-x-2">

@@ -51,7 +51,7 @@ const CallToActionSection = () => {
   };
 
   return (
-    <section id="cta" className="py-12 sm:py-16 lg:py-20">
+    <section id="cta" className="pt-6 pb-12 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-primary py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-background mb-6 sm:mb-8 lg:mb-12">

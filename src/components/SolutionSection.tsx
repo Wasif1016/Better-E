@@ -38,13 +38,13 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="oplossing" className="py-12 sm:py-16 lg:py-20">
+    <section id="oplossing" className="pt-2 pb-8 sm:pt-8 sm:pb-8 lg:pt-8 lg:pb-8">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-2 sm:mb-3 lg:mb-4">
           <span className="text-foreground">De BetterE Oplossing</span>
         </h2>
 
-        <p className="max-w-3xl text-foreground/80 mx-auto text-center font-medium text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 lg:mb-12 px-4">
+        <p className="max-w-3xl text-foreground/80 mx-auto text-center font-medium text-sm sm:text-base lg:text-lg xl:text-xl mb-4 sm:mb-5 lg:mb-6 px-4">
           BetterE is een innovatief product dat e-bike-, e-step- en e-scooter batterijen slimmer en veiliger oplaadt, waardoor ze langer meegaan.
         </p>
 
