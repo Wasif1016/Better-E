@@ -38,9 +38,9 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="oplossing" className="pt-4 pb-8 sm:pt-8 sm:pb-8 lg:pt-8 lg:pb-8">
+    <section id="oplossing" className="pt-8 pb-8 sm:pt-8 sm:pb-8 lg:pt-8 lg:pb-8">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-4 sm:mb-3 lg:mb-4">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-6 sm:mb-3 lg:mb-4">
           <span className="text-foreground">De BetterE Oplossing</span>
         </h2>
 

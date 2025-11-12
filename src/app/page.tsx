@@ -21,9 +21,9 @@ export default function Home() {
         <Hero />
 
         {/* Problem Section */}
-        <section id="probleem" className="pt-6 pb-12 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20 bg-foreground/5">
+        <section id="probleem" className="pt-10 pb-12 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20 bg-foreground/5">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-6 sm:mb-6 lg:mb-8">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-8 sm:mb-6 lg:mb-8">
               Het Probleem
             </h2>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-center text-foreground/90 mb-6 sm:mb-8 lg:mb-12 max-w-4xl mx-auto px-4">
