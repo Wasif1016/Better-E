@@ -50,11 +50,11 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="pt-2 pb-12 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20 bg-gray-50">
+    <section id="how-it-works" className="pt-4 pb-12 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20 bg-gray-50">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header - On top for desktop, before image on mobile */}
         <div className="mb-6 sm:mb-8 lg:mb-12 text-left lg:text-left" id="gebruik">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 sm:mb-3 text-foreground">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 sm:mb-3 text-foreground">
             ★ Hoe het werkt
           </h2>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-foreground/80">

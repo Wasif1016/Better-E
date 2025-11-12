@@ -68,8 +68,8 @@ const ImpactSection = () => {
 
   return (
     <section id="impact" className="">
-      <div className="w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6 lg:mb-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-6 lg:mb-8">
           Gemeten Impact
         </h2>
         <p className="text-base sm:text-lg lg:text-xl max-w-3xl mx-auto text-center text-foreground/80 mb-6 sm:mb-8 lg:mb-12">
