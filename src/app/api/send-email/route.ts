@@ -33,19 +33,7 @@ export async function POST(request: Request) {
 
       await transporter.verify();
 
-      // Confirmation email to user
-      const userConfirmationHtml = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #22c55e;">Bedankt voor je interesse!</h2>
-          <p>Beste gebruiker,</p>
-          <p>Bedankt voor je interesse in BetterE! We hebben je e-mailadres ontvangen en zullen je op de hoogte houden van de lancering en early-bird kortingen.</p>
-          <p>Je e-mailadres: <strong>${email}</strong></p>
-          <p>We nemen zo spoedig mogelijk contact met je op.</p>
-          <p>Met vriendelijke groet,<br>Het BetterE team</p>
-        </div>
-      `;
-
-      // Admin notification email
+      // Admin notification email (only sent to company, not to user)
       const adminNotificationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2>Nieuwe Pre-order Aanmelding</h2>
@@ -55,16 +43,7 @@ export async function POST(request: Request) {
         </div>
       `;
 
-      // Send confirmation email to user
-      await transporter.sendMail({
-        from: senderEmail,
-        to: email,
-        subject: 'Bedankt voor je interesse in BetterE!',
-        html: userConfirmationHtml,
-        replyTo: senderEmail,
-      });
-
-      // Send notification to admin
+      // Send notification to admin (company email only)
       await transporter.sendMail({
         from: senderEmail,
         to: companyEmail,
@@ -76,8 +55,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    // Handle other email types (existing functionality)
-    const { subject, html, to, replyTo } = body as { subject?: string; html?: string; to?: string; replyTo?: string };
+    // Handle other email types (existing functionality, but always send only to company email)
+    const { subject, html, replyTo } = body as { subject?: string; html?: string; replyTo?: string };
 
     if (!html) {
       return NextResponse.json({ error: 'Missing email html' }, { status: 400 });
@@ -102,7 +81,8 @@ export async function POST(request: Request) {
     // Verify connection configuration for clearer errors
     await transporter.verify();
 
-    const toAddress = to || companyEmail;
+    // Always send to company email, never directly to the user
+    const toAddress = companyEmail;
     const mailSubject = subject || 'New message from BetterE website';
 
     const info = await transporter.sendMail({
