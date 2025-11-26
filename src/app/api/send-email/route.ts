@@ -19,6 +19,7 @@ export async function POST(request: Request) {
       const smtpPass = process.env.SMTP_PASS as string;
       const senderEmail = process.env.SENDER_EMAIL as string;
       const companyEmail = process.env.COMPANY_EMAIL as string;
+      const companyEmailSecondary = process.env.COMPANY_EMAIL_SECONDARY as string | undefined;
 
       if (!smtpUser || !smtpPass || !senderEmail || !companyEmail) {
         return NextResponse.json({ error: 'Server email configuration missing' }, { status: 500 });
@@ -33,7 +34,7 @@ export async function POST(request: Request) {
 
       await transporter.verify();
 
-      // Admin notification email (only sent to company, not to user)
+      // Admin notification email (only sent to company addresses, not to user)
       const adminNotificationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2>Nieuwe Pre-order Aanmelding</h2>
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
         </div>
       `;
 
-      // Send notification to admin (company email only)
+      // Send notification to primary company email
       await transporter.sendMail({
         from: senderEmail,
         to: companyEmail,
@@ -51,6 +52,17 @@ export async function POST(request: Request) {
         html: adminNotificationHtml,
         replyTo: email,
       });
+
+      // Optionally send a second notification to a secondary company email
+      if (companyEmailSecondary) {
+        await transporter.sendMail({
+          from: senderEmail,
+          to: companyEmailSecondary,
+          subject: 'Nieuwe Pre-order Aanmelding - BetterE (kopie)',
+          html: adminNotificationHtml,
+          replyTo: email,
+        });
+      }
 
       return NextResponse.json({ ok: true });
     }
@@ -66,6 +78,7 @@ export async function POST(request: Request) {
     const smtpPass = process.env.SMTP_PASS as string;
     const senderEmail = process.env.SENDER_EMAIL as string;
     const companyEmail = process.env.COMPANY_EMAIL as string;
+    const companyEmailSecondary = process.env.COMPANY_EMAIL_SECONDARY as string | undefined;
 
     if (!smtpUser || !smtpPass || !senderEmail || !companyEmail) {
       return NextResponse.json({ error: 'Server email configuration missing' }, { status: 500 });
@@ -81,19 +94,30 @@ export async function POST(request: Request) {
     // Verify connection configuration for clearer errors
     await transporter.verify();
 
-    // Always send to company email, never directly to the user
-    const toAddress = companyEmail;
+    // Always send to company emails, never directly to the user
     const mailSubject = subject || 'New message from BetterE website';
 
-    const info = await transporter.sendMail({
+    // Primary company email
+    const infoPrimary = await transporter.sendMail({
       from: senderEmail,
-      to: toAddress,
+      to: companyEmail,
       subject: mailSubject,
       html,
       replyTo: replyTo || senderEmail,
     });
 
-    return NextResponse.json({ ok: true, messageId: info.messageId });
+    // Optional secondary company email
+    if (companyEmailSecondary) {
+      await transporter.sendMail({
+        from: senderEmail,
+        to: companyEmailSecondary,
+        subject: `${mailSubject} (kopie)`,
+        html,
+        replyTo: replyTo || senderEmail,
+      });
+    }
+
+    return NextResponse.json({ ok: true, messageId: infoPrimary.messageId });
   } catch (error) {
     console.error('Email error:', error);
     return NextResponse.json({ error: (error as Error).message || 'Failed to send email' }, { status: 500 });
