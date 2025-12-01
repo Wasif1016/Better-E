@@ -3,11 +3,13 @@
 Create a file named `.env.local` in the project root with:
 
 ```
-SMTP_USER=81abe7001@smtp-brevo.com
-SMTP_PASS=w3ApFNx1bg4fW8mr
+RESEND_API_KEY=re_your_api_key_here
 SENDER_EMAIL=web.dev.haseeb@gmail.com
 COMPANY_EMAIL=Pepijn@kluytmans.com
+COMPANY_EMAIL_SECONDARY=optional_secondary_email@example.com
 ```
+
+Note: Get your Resend API key from [resend.com](https://resend.com/api-keys). Make sure the `SENDER_EMAIL` is verified in your Resend account.
 
 Restart the dev server after adding envs.
 
