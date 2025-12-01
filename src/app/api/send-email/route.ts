@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
       await transporter.verify();
 
-      // Admin notification email (only sent to company addresses, not to user)
+      // Admin notification email (sent to company addresses)
       const adminNotificationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2>Nieuwe Pre-order Aanmelding</h2>
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
       // Send notification to primary company email
       await transporter.sendMail({
-        from: senderEmail,
+        from: `BetterE <${senderEmail}>`,
         to: companyEmail,
         subject: 'Nieuwe Pre-order Aanmelding - BetterE',
         html: adminNotificationHtml,
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       // Optionally send a second notification to a secondary company email
       if (companyEmailSecondary) {
         await transporter.sendMail({
-          from: senderEmail,
+          from: `BetterE <${senderEmail}>`,
           to: companyEmailSecondary,
           subject: 'Nieuwe Pre-order Aanmelding - BetterE (kopie)',
           html: adminNotificationHtml,
@@ -64,10 +64,37 @@ export async function POST(request: Request) {
         });
       }
 
+      // Thank-you email to the user
+      const userThankYouHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #111827;">
+          <h2 style="font-size: 20px; margin-bottom: 12px;">Bedankt voor je interesse in BetterE</h2>
+          <p style="margin-bottom: 12px;">
+            Bedankt voor je pre-order aanmelding met het e-mailadres <strong>${email}</strong>.
+          </p>
+          <p style="margin-bottom: 12px;">
+            We houden je op de hoogte van de laatste ontwikkelingen rondom BetterE en laten het je weten zodra er nieuws is over beschikbaarheid, prijzen en lancering.
+          </p>
+          <p style="margin-bottom: 12px;">
+            Als je in de tussentijd vragen hebt, kun je altijd reageren op deze e-mail.
+          </p>
+          <p style="margin-top: 24px;">
+            Met vriendelijke groet,<br/>
+            <strong>Het BetterE team</strong>
+          </p>
+        </div>
+      `;
+
+      await transporter.sendMail({
+        from: `BetterE <${senderEmail}>`,
+        to: email,
+        subject: 'Bedankt voor je pre-order aanmelding - BetterE',
+        html: userThankYouHtml,
+      });
+
       return NextResponse.json({ ok: true });
     }
 
-    // Handle other email types (existing functionality, but always send only to company email)
+    // Handle other email types (partnership/contact etc.)
     const { subject, html, replyTo } = body as { subject?: string; html?: string; replyTo?: string };
 
     if (!html) {
@@ -94,12 +121,12 @@ export async function POST(request: Request) {
     // Verify connection configuration for clearer errors
     await transporter.verify();
 
-    // Always send to company emails, never directly to the user
+    // Always send to company emails; optionally also a confirmation to the user
     const mailSubject = subject || 'New message from BetterE website';
 
     // Primary company email
     const infoPrimary = await transporter.sendMail({
-      from: senderEmail,
+      from: `BetterE <${senderEmail}>`,
       to: companyEmail,
       subject: mailSubject,
       html,
@@ -109,11 +136,40 @@ export async function POST(request: Request) {
     // Optional secondary company email
     if (companyEmailSecondary) {
       await transporter.sendMail({
-        from: senderEmail,
+        from: `BetterE <${senderEmail}>`,
         to: companyEmailSecondary,
         subject: `${mailSubject} (kopie)`,
         html,
         replyTo: replyTo || senderEmail,
+      });
+    }
+
+    // Optional thank-you email to the user, if we have their email in replyTo
+    if (replyTo) {
+      const userHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #111827;">
+          <h2 style="font-size: 20px; margin-bottom: 12px;">We hebben je bericht ontvangen</h2>
+          <p style="margin-bottom: 12px;">
+            Bedankt voor je bericht aan BetterE. We hebben je aanvraag goed ontvangen en nemen zo snel mogelijk contact met je op.
+          </p>
+          <p style="margin-bottom: 12px;">
+            Ons team bekijkt je bericht zorgvuldig en probeert doorgaans binnen enkele werkdagen te reageren.
+          </p>
+          <p style="margin-bottom: 12px;">
+            Als je aanvullende informatie wilt sturen, kun je eenvoudig reageren op deze e-mail.
+          </p>
+          <p style="margin-top: 24px;">
+            Met vriendelijke groet,<br/>
+            <strong>Het BetterE team</strong>
+          </p>
+        </div>
+      `;
+
+      await transporter.sendMail({
+        from: `BetterE <${senderEmail}>`,
+        to: replyTo,
+        subject: 'Bedankt voor je bericht - BetterE',
+        html: userHtml,
       });
     }
 
