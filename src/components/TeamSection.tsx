@@ -49,20 +49,20 @@ const TeamSection = () => {
                   alt={member.name}
                   fill
                   // For the first image, set objectPosition bottom;
-                  // For the third image, set objectPosition center center;
+                  // For the third image (Godard Lensvelt), set object-position "top 35% center";
                   // Otherwise center
                   className={`object-cover ${
                     index === 0
                       ? "object-bottom"
                       : index === 2
-                      ? "object-center"
+                      ? "" // Remove object-center so style applies
                       : "object-center"
                   } w-full h-full transition-transform duration-300 hover:scale-105`}
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   priority={index === 0}
                   style={
                     index === 2
-                      ? { objectPosition: "center center" }
+                      ? { objectPosition: "top 35% center" }
                       : index === 0
                       ? { objectPosition: "bottom" }
                       : {} 
