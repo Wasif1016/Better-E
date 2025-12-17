@@ -27,7 +27,7 @@ const TeamSection = () => {
     {
       name: "Godard Lensvelt",
       role: "Business Development",
-      image: "/Godard-Lensvelt.jpg",
+      image: "/Godard Lensvelt1.jpeg",
       description: "Studeert Technische Bestuurskunde aan de TU Delft met een focus op Energie & Industrie en volgde een minor in Finance aan de Comillas Universiteit in Madrid. Hij heeft meerdere jaren ervaring in de blockchain sector, waar hij investeerde in startups, samenwerkte met teams, adviseerde en deelnam aan investeringsrondes. De combinatie van deze academische achtergrond en praktijkervaring met startups geeft hem de drive en expertise om BetterE tot een succes te maken."
     }
   ];
@@ -45,24 +45,24 @@ const TeamSection = () => {
             <div key={index} className="bg-background h-fit max-h-fit shrink-0 rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col">
               <div className="relative w-full aspect-[4/3]">
                 <Image 
-                  src={member.image} 
-                  alt={member.name} 
+                  src={member.image}
+                  alt={member.name}
                   fill
                   // For the first image, set objectPosition bottom;
-                  // For the third image, set objectPosition bottom center;
+                  // For the third image, set objectPosition center center;
                   // Otherwise center
                   className={`object-cover ${
                     index === 0
                       ? "object-bottom"
                       : index === 2
-                      ? "object-bottom-bottom"
+                      ? "object-center"
                       : "object-center"
                   } w-full h-full transition-transform duration-300 hover:scale-105`}
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   priority={index === 0}
                   style={
                     index === 2
-                      ? { objectPosition: "top center" }
+                      ? { objectPosition: "center center" }
                       : index === 0
                       ? { objectPosition: "bottom" }
                       : {} 
