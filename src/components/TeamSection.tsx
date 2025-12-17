@@ -48,10 +48,25 @@ const TeamSection = () => {
                   src={member.image} 
                   alt={member.name} 
                   fill
-                  // For the first image, set objectPosition top; otherwise center
-                  className={`object-cover ${index === 0 ? "object-bottom" : "object-center"} w-full h-full transition-transform duration-300 hover:scale-105`}
+                  // For the first image, set objectPosition bottom;
+                  // For the third image, set objectPosition bottom center;
+                  // Otherwise center
+                  className={`object-cover ${
+                    index === 0
+                      ? "object-bottom"
+                      : index === 2
+                      ? "object-bottom-bottom"
+                      : "object-center"
+                  } w-full h-full transition-transform duration-300 hover:scale-105`}
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   priority={index === 0}
+                  style={
+                    index === 2
+                      ? { objectPosition: "top center" }
+                      : index === 0
+                      ? { objectPosition: "bottom" }
+                      : {} 
+                  }
                 />
               </div>
               <div className="p-4 sm:p-6 flex flex-col flex-1">
